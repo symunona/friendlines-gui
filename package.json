@@ -1,0 +1,21 @@
+{
+    "name": "friendlines-gui",
+    "version": "0.0.1",
+    "description": "The frontend of friendlines",
+    "main": "app.js",
+    "scripts": {
+
+    },
+    "keywords": [
+        "facebook",
+        "history",
+        "visualisation"
+
+    ],
+    "author": "Bendeguy",
+    "license": "ISC",
+    "dependencies": {
+
+
+    }
+}
