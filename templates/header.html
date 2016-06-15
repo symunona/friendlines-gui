@@ -1,0 +1,20 @@
+<header id="primary-header">
+    <nav id="primary-navigation">
+
+        <ul id='statlist'>
+            <li><img src='assets/logo.png' class="headericon"></li>
+            <li class="username" data-bind="text: user().username">Dummy username</li>
+            <!-- ko foreach: processors-->
+            <li>
+                <a data-bind="  attr: {'data-index': $index}, 
+                                    text: name, 
+                                    click: $root.actualProcessor.bind(this,$data), 
+                                    css:{active: $root.actualProcessor()?$root.actualProcessor().name == name:false}"></a>
+            </li>
+            <!-- /ko -->
+            <!--<li>FriendLines 0.1</li>-->
+        </ul>
+
+    </nav>
+    <div class='tmp'><a href="http://theminimalproject.dyndns.hu" target="_blank">™P</a></div>
+</header>

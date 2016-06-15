@@ -1,0 +1,43 @@
+<footer class='statusfooter' data-bind="click: statusVisible.bind(this,!statusVisible()), css:{open: statusVisible()}">
+
+    <button class="sharebutton" data-bind="click: share, css: {disabledHighlight: shareVisible()}">Share</button>
+    <span class="caret" data-bind="text: statusVisible()?'▼':'more info ▲'"></span>
+
+
+    <div id='statusloading'></div>
+    <span id='status' data-bind="text: status, style:{'color':statusColor()==defaultStatusColor?'black':'white','background-color':statusColor()}"></span>
+    <div class="userinfo">
+        <!--<h2 data-bind="text: selectedUser"></h2>-->
+        <div data-bind="if: selectedUser()">
+            <table class="sumdata">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Inbound</th>
+                        <th></th>
+                        <th>Outbound</th>
+                        <th></th>
+                        <th>Sum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ko foreach: Object.keys(userFilterMap()[selectedUser()].sums.sum) -->
+                    <tr data-bind="attr:{title: $root.emotions[$data]?$root.emotions[$data].join(' '):''}">
+                        <td data-bind="text: $data"></td>
+                        <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.inbound[$data]"></td>
+                        <td data-bind="text: $data"></td>
+                        <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.outbound[$data]"></td>
+                        <td data-bind="text: $data"></td>
+                        <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.sum[$data]"></td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+
+            * These statistics are provided by the emoticons used in messages, according to <a href="#" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://en.wikipedia.org/wiki/List_of_emoticons')">Wikipedia's table</a>.
+
+        </div>
+
+    </div>
+
+</footer>

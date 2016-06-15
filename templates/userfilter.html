@@ -1,0 +1,9 @@
+<header data-bind="visible: usersVisible()">
+    <div id="userfilter" data-bind="foreach: userFilterList">
+        <span data-bind="style: {'background-color': isIn()?$root.userFilterMap()[userid]?$root.userFilterMap()[userid].color:'black':'#d1d1d1'}">
+                        <span data-bind="text: name"></span>
+        <input type="checkbox" data-bind="checked: isIn, visible: $root.filterVisible()">
+        </span>
+
+    </div>
+</header>
