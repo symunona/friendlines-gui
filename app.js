@@ -10,6 +10,8 @@ requirejs.config({
     }
 });
 
+
+
 define([
     'ko',
     'lib/templates',
@@ -31,7 +33,19 @@ define([
         // ko.observableArray([{
         //     name: 'vis1'
         // }]),
-        actualProcessor: ko.observable()
+        actualProcessor: ko.observable(),
+
+        // THIS IS A TEST
+        extract: function() {
+            // TODO: convert cache
+            // TODO: open file
+            var parser = require('../extract-messages-from-facebook-html/html-message-parse-utils');
+            var fs = require("fs");
+            var utils = require('../extract-messages-from-facebook-html/zip-utils');
+            var userRawData = utils.parse('../extract-messages-from-facebook-html/facebook-test.zip');
+            fs.writeFileSync('datasource.raw.json', userRawData);
+        }
+
     };
     user.load();
 
