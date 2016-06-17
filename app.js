@@ -40,13 +40,17 @@ define([
 
         // THIS IS A TEST
         extract: function() {
-            // TODO: convert cache
-            // TODO: open file
-            convert.selectFile();
+            convert.selectFile().done(function(data) {
+                vm.user.metaData(data.messageData.parsingMetaData);
+                vm.user.messages(data.messageData.messages);
+                vm.user.userActivity(data.userActivity);
+                vm.user.userName(data.messageData.parsingMetaData.userName);
+            });
+
         }
 
     };
-    user.load();
+    // user.load();
 
     // DEBUG
     window.ko = ko;
