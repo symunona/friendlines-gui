@@ -2,21 +2,150 @@ body {
   font-family: Verdana;
   font-size: 10px;
 }
+header {
+  background-color: rgba(255, 255, 255, 0.65);
+  position: relative;
+  line-height: 1.3em;
+  padding-top: 3px;
+}
+header .headericon {
+  width: 16px;
+  height: 16px;
+}
 header #primary-navigation {
   background: #3b5998;
   color: white;
-  padding: 11px;
   font-size: large;
+  padding: 11px;
+}
+header .graphselector {
+  padding-left: 11px;
+}
+header .graphselector a {
+  text-decoration: underline;
+  cursor: pointer;
+}
+header .graphselector a.active {
+  font-weight: bold;
+}
+header .filtertoggler,
+header .searchtoggler,
+header .userstoggler {
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+}
+header .filtertoggler:hover,
+header .searchtoggler:hover,
+header .userstoggler:hover {
+  text-decoration: underline;
+}
+header#search {
+  height: 40px;
+  line-height: 40px;
+  padding: 11px 11px 11px 11px;
+}
+header #resetBtn {
+  float: right;
+}
+.blur {
+  filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+.loading,
+.overlay {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+.loading {
+  background-image: url('loading.gif');
+  background-position: center 200px ;
+  background-repeat: no-repeat;
+  text-align: center;
+  line-height: 30px;
+}
+#progress {
+  height: 15px;
+  display: block;
+  background: green;
+}
+#status {
+  margin-top: 300px;
+}
+#statusloading {
+  float: right;
+  display: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
+  background-image: url('loading.gif');
+}
+.statusfooter {
+  width: 100%;
+  bottom: 0px;
+  height: 32px;
+  padding-left: 10px;
+  position: fixed;
+  overflow: hidden;
+  cursor: pointer;
+  background: #efefef;
+}
+.statusfooter.open {
+  overflow-y: auto;
+  height: 30%;
+}
+.statusfooter .caret {
+  float: right;
+  margin-right: 32px;
+  line-height: 32px;
+}
+.statusfooter #status {
+  line-height: 32px;
+  padding: 4px;
+}
+.statusfooter table {
+  margin-bottom: 5px;
+}
+.statusfooter table tr:hover > td {
+  background-color: #fff;
+}
+.statusfooter table td,
+.statusfooter table th {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#userfilter {
+  padding-top: 6px;
+  margin-left: 11px;
 }
 #userfilter > span {
   color: white;
   display: inline-block;
-  padding: 4px;
+  cursor: pointer;
+  padding: 2px;
   margin-right: 6px;
   margin-bottom: 6px;
 }
+#content {
+  height: calc(100%);
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+}
 #filterloader {
   text-align: right;
+  margin-bottom: 4px;
+  margin-top: 4px;
 }
 path.highlight {
   fill: red;
@@ -63,6 +192,9 @@ circle.highlight3 {
 #statlist > li {
   display: inline-block;
 }
+#statlist > li img {
+  margin-right: 10px;
+}
 ul > li {
   margin-right: 20px;
 }
@@ -76,15 +208,125 @@ ul > li > a {
 text {
   cursor: pointer;
 }
-#filter {
+#filter form {
   padding: 10px;
 }
 #filter input[type='number'] {
-  width: 30px;
+  width: 40px;
 }
 #filter table td {
   border: 1px solid #eee;
   padding: 5px;
+}
+#filter .info {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.alert {
+  font-size: large;
+  line-height: 2em;
+}
+p.alert {
+  color: red;
+}
+.sharebutton {
+  background-color: #ff5500;
+  color: white;
+  float: right;
+  margin-right: 20px;
+  border-radius: 13px;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 10px 10px;
+  margin-top: 2px;
+}
+.sharebutton.disabledHighlight {
+  background-color: grey;
+}
+.sharebuttonform {
+  background-color: #ff5500;
+  color: white;
+  float: right;
+  margin-right: 20px;
+  border-radius: 13px;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 10px 10px;
+  margin-top: 2px;
+  float: none;
+  margin-top: 10px;
+}
+.sharebuttonform.disabledHighlight {
+  background-color: grey;
+}
+.newshare {
+  margin-top: 10px;
+}
+.closebutton {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #555;
+  line-height: 30px;
+  cursor: pointer;
+}
+.closebutton:hover {
+  background: white;
+}
+#share {
+  position: absolute;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.5);
+}
+#contribute {
+  position: absolute;
+  width: 600px;
+  height: 500px;
+  left: calc( 50% - 300px );
+  top: calc( 50% - 250px );
+  background: white;
+  padding: 20px;
+  border-radius: 25px;
+  border: 1px solid #777;
+}
+#contribute textarea {
+  width: 596px;
+  resize: none;
+}
+#contribute p {
+  line-height: 2em;
+}
+#uploadpreview {
+  width: 600px;
+  height: 200px;
+  cursor: move;
+  overflow: hidden;
+  border: 1px solid #aaa;
+}
+.center {
+  text-align: center;
+}
+.tmp > a {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: white;
+  text-decoration: none;
+}
+.tmp > a:hover {
+  text-decoration: underline;
+}
+.morepage {
+  float: right;
 }
 /* RESET */
 html,

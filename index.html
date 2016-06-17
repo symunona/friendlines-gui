@@ -42,11 +42,18 @@
     <div data-bind="template: 'header'"></div>
 
     <button data-bind='click: extract'>Extract test</button>
+    <button data-bind='click: loadingtest'>loading test</button>
 
     <div id="content-wrapper">
         <!-- Loading overlap -->
         <div class="loading" data-bind="visible: ui.loading()">
-            <span id='status' data-bind="text: status"></span>
+            <div id='status' data-bind="text: ui.status"></div>
+            <div id='progress-text' data-bind="text: ui.progress.text"></div>
+            <div id='progress' data-bind="
+                visible: ui.progress.percent(), 
+                style: {width: ui.progress.percent()+'%'}"></div>
+
+
         </div>
 
         <!-- Filter settings page -->
@@ -73,14 +80,10 @@
     </div>
 
     <!-- Status bar -->
+    <div data-bind="template: 'status'"></div>
 
     <!-- Share window -->
-    <script type="text/html" id="seasonTemplate">
-        <li>
-            <strong data-bind="text: name"></strong>
-            <ul data-bind="template: { name: 'monthTemplate', foreach: months, as: 'month' }"></ul>
-        </li>
-    </script>
+    <input style="display:none;" id="file-dialog" type="file" />
 
     <script data-main="app" src="node_modules/requirejs/require.js"></script>
     <!--<script src="node_modules/requirejs-text/text.js"></script>-->

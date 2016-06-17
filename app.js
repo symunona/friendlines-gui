@@ -11,39 +11,38 @@ requirejs.config({
 });
 
 
-
 define([
     'ko',
     'lib/templates',
     'lib/ui',
     'lib/processors',
     'lib/user',
+    'lib/convert',
     'text'
 
-], function(ko, templates, ui, processors, user, text) {
+], function(ko, templates, ui, processors, user, convert, text) {
     console.log(user);
     var vm = {
         error: ko.observable('No error'),
         templates: templates,
-        loading: ko.observable(false),
         ui: ui,
         user: user,
         processors: processors,
 
-        // ko.observableArray([{
-        //     name: 'vis1'
-        // }]),
+        loadingtest: function() {
+            ui.loading(true);
+
+            ui.progress.percent(30);
+            ui.status('whaat');
+        },
+        share: function() {},
         actualProcessor: ko.observable(),
 
         // THIS IS A TEST
         extract: function() {
             // TODO: convert cache
             // TODO: open file
-            var parser = require('../extract-messages-from-facebook-html/html-message-parse-utils');
-            var fs = require("fs");
-            var utils = require('../extract-messages-from-facebook-html/zip-utils');
-            var userRawData = utils.parse('../extract-messages-from-facebook-html/facebook-test.zip');
-            fs.writeFileSync('datasource.raw.json', userRawData);
+            convert.selectFile();
         }
 
     };
