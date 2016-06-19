@@ -56,7 +56,8 @@ header #resetBtn {
   -webkit-filter: blur(4px);
 }
 .loading,
-.overlay {
+.overlay,
+.nouser {
   position: absolute;
   z-index: 9999;
   height: 100%;
@@ -64,6 +65,13 @@ header #resetBtn {
   top: 0;
   left: 0;
   background-color: rgba(128, 128, 128, 0.5);
+}
+.nouser {
+  text-align: center;
+  line-height: 2em;
+}
+.nouser p {
+  padding-top: 40%;
 }
 .loading {
   background-image: url('loading.gif');

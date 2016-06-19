@@ -42,10 +42,17 @@ header{
 
 .blur{ filter:blur(4px); -o-filter:blur(4px); -ms-filter:blur(4px); -moz-filter:blur(4px); -webkit-filter:blur(4px);}
 
-.loading, .overlay{
+.loading, .overlay, .nouser{
     position: absolute; z-index: 9999;
     height: 100%; width: 100%; top: 0; left: 0;
     background-color: rgba(128,128,128,0.5);
+}
+.nouser{
+    text-align: center;
+    line-height: 2em;
+    p{
+        padding-top: 40%;
+    }
 }
 .loading{
     background-image: url('loading.gif');  

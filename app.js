@@ -1,56 +1,77 @@
 requirejs.config({
     baseUrl: '',
-
     paths: {
-        ko: 'node_modules/knockout/build/output/knockout-latest.debug',
+        knockout: 'node_modules/knockout/build/output/knockout-latest.debug',
+        ko: 'knockout',
+        wrap: 'lib/utils/knockout.wrap',
         jQuery: 'node_modules/jquery/dist/jquery.min',
         text: 'node_modules/requirejs-text/text',
-        convert: '../friendlines-convert-1'
-
+        json: 'node_modules/requirejs-plugins/src/json',
+        convert: '../friendlines-convert-1',
+        storage: 'lib/utils/storage'
     }
 });
 
 
 define([
-    'ko',
+    'knockout',
     'lib/templates',
     'lib/ui',
     'lib/processors',
     'lib/user',
     'lib/convert',
-    'text'
+    'lib/filter',
+    'text',
+    'json'
 
-], function(ko, templates, ui, processors, user, convert, text) {
-    console.log(user);
+
+
+], function(ko, templates, ui, processors, user, convert, filter, text) {
+
     var vm = {
-        error: ko.observable('No error'),
+        error: ko.observable(''),
         templates: templates,
         ui: ui,
         user: user,
         processors: processors,
+        filter: filter,
 
         loadingtest: function() {
             ui.loading(true);
 
             ui.progress.percent(30);
-            ui.status('whaat');
+            ui.status('');
         },
         share: function() {},
+
+        preRender: function() {
+
+            /* Apply the filter, get the filtered userlist and metadata back. */
+            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), filter);
+
+            /* Update the renderable userlist */
+            filter.actualRenderableUserList(preProcessedUserData.filteredUsers);
+
+            vm.render();
+
+        },
+        render: function() {
+
+            /* Render everything*/
+            // vm.actualProcessor.draw(filter.filteredUserData());
+
+        },
         actualProcessor: ko.observable(),
 
-        // THIS IS A TEST
-        extract: function() {
-            convert.selectFile().done(function(data) {
-                vm.user.metaData(data.messageData.parsingMetaData);
-                vm.user.messages(data.messageData.messages);
-                vm.user.userActivity(data.userActivity);
-                vm.user.userName(data.messageData.parsingMetaData.userName);
-            });
-
-        }
+        extract: convert.selectFile
 
     };
-    // user.load();
+
+    /* Loads last user who have been loaded */
+    convert.init();
+
+    /* Loads the first processor and drawer */
+    vm.actualProcessor(processors[0]);
 
     // DEBUG
     window.ko = ko;

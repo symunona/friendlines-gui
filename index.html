@@ -41,8 +41,8 @@
     <!-- Main header with the graph selsctor and the username -->
     <div data-bind="template: 'header'"></div>
 
-    <button data-bind='click: extract'>Extract test</button>
-    <button data-bind='click: loadingtest'>loading test</button>
+    <!--<button data-bind='click: extract'>Extract test</button>
+    <button data-bind='click: loadingtest'>loading test</button>-->
 
     <div id="content-wrapper">
         <!-- Loading overlap -->
@@ -54,6 +54,12 @@
                 style: {width: ui.progress.percent()+'%'}"></div>
 
 
+        </div>
+        <div class="nouser" data-bind="visible: !user.userName() && !ui.loading()" style="display: none;">
+            <p>No facebook history zip loaded. </p>
+            <!--<p>Try drag & drop or select:</p>-->
+            <!--<p>Select it here:</p>-->
+            <button data-bind="click: extract">Browse</button>
         </div>
 
         <!-- Filter settings page -->
@@ -67,15 +73,24 @@
             <!--<p class='searchtoggler'>
                         <a data-bind="click: searchVisible.bind(this,!searchVisible())">Search<span class='searchindicator'></span> <a onclick='resetSearch()', style="display: none">x</a> </a>
                     </p>-->
+            <p>
+                <a data-bind="click: extract">Open new ZIP</a>
+            </p>
         </header>
 
         <!--Search bar for later-->
 
+        <!-- Render button -->
+        <button class='renderbutton' data-bind="click: preRender">Render</button>
+
         <!-- Filter #1 -->
+        <div class='filter' data-bind="component: 'filter'"></div>
 
         <!-- Filter Manager -->
+        <!--<div class='filtermanager' data-bind="component: 'filter'"></div>-->
 
         <!-- User filter -->
+        <div class='filter' data-bind="visible: ui.usersVisible(), component: 'userfilter'"></div>
 
     </div>
 
