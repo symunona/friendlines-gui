@@ -134,7 +134,7 @@ header #resetBtn {
   padding-top: 6px;
   margin-left: 11px;
 }
-#userfilter > span {
+#userfilter > p > span {
   color: white;
   display: inline-block;
   cursor: pointer;

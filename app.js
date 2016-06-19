@@ -8,7 +8,8 @@ requirejs.config({
         text: 'node_modules/requirejs-text/text',
         json: 'node_modules/requirejs-plugins/src/json',
         convert: '../friendlines-convert-1',
-        storage: 'lib/utils/storage'
+        storage: 'lib/utils/storage',
+        _: 'node_modules/underscore/underscore-min'
     }
 });
 
@@ -22,11 +23,12 @@ define([
     'lib/convert',
     'lib/filter',
     'text',
+    'wrap',
     'json'
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, text) {
+], function(ko, templates, ui, processors, user, convert, filter, text, wrap) {
 
     var vm = {
         error: ko.observable(''),
@@ -47,8 +49,9 @@ define([
         preRender: function() {
 
             /* Apply the filter, get the filtered userlist and metadata back. */
-            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), filter);
+            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), wrap.toJS(filter.actual));
 
+            console.log(preProcessedUserData);
             /* Update the renderable userlist */
             filter.actualRenderableUserList(preProcessedUserData.filteredUsers);
 
