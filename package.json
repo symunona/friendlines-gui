@@ -12,6 +12,7 @@
   "author": "Bendeguy",
   "license": "ISC",
   "dependencies": {
+    "d3": "^3.5.17",
     "jquery": "^3.0.0",
     "knockout": "^3.4.0",
     "less": "^2.7.1",
