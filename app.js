@@ -33,13 +33,14 @@ define([
 
 ], function(ko, templates, ui, processors, user, convert, filter, text, wrap, json, colors) {
 
-    var vm = {
+    var app = {
         error: ko.observable(''),
         templates: templates,
         ui: ui,
         user: user,
         processors: processors,
         filter: filter,
+        colors: colors,
 
         loadingtest: function() {
             ui.loading(true);
@@ -53,13 +54,13 @@ define([
             /* Apply the filter, get the filtered userlist and metadata back. */
             var f = wrap.toJS(filter.actual);
 
-            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), f);
+            var preProcessedUserData = app.actualProcessor().process(user.userActivity(), f);
 
             console.log(preProcessedUserData);
             /* Update the renderable userlist */
             filter.actualRenderableUserList(preProcessedUserData.filteredUsers);
 
-            vm.render();
+            app.render();
 
         },
         render: function() {
@@ -68,11 +69,18 @@ define([
 
             var params = {
                 xStep: 50,
-                yStep: 50,
+                yStep: 25,
                 yScale: 1,
             };
             /* Render everything*/
-            var drawing = vm.actualProcessor().draw('#timeline', filter.usersToRender(), params, filter, colors);
+            ui.loading(true);
+            ui.status('Drawing...');
+            setTimeout(function() {
+                var drawing = app.actualProcessor()
+                    .draw('#timeline', filter.usersToRender(), params, filter, colors);
+                ui.loading(false);
+            }, 0);
+
 
             // TODO: bind event handlers to drawing
 
@@ -93,15 +101,15 @@ define([
     convert.init();
 
     /* Loads the first processor and drawer */
-    vm.actualProcessor(processors[0]);
+    app.actualProcessor(processors[0]);
 
     // DEBUG
     window.ko = ko;
-    window.vm = vm;
+    window.app = app;
 
-    ko.applyBindings(vm, document.getElementById("body"));
+    ko.applyBindings(app, document.getElementById("body"));
 
     // for testing 
-    setTimeout(vm.preRender, 0);
+    setTimeout(app.preRender, 0);
 
 });

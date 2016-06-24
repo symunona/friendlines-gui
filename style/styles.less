@@ -6,7 +6,12 @@
 
 body{
     font-family: Verdana;
-   font-size: 10px;
+    font-size: 10px;
+
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 header{
@@ -142,31 +147,56 @@ line{
 .highlight2 > rect, circle.highlight2{ fill: @highlight2; }
 .highlight3 > rect, circle.highlight3{ fill: @highlight3; }
 
+.slow-transition{
+    transition: all 0.3s;
+}
+
 svg{
     font: 10px sans-serif;
     
     rect.mainrect {
         fill: #fff;
     }
-    .axis path,
-    .axis line {
-        fill: none;
-        stroke: #eee;
-    }
-    .x.axis line{
-        stroke: #f7f7f7;
-    }
-    .markerr.bottom {
-        opacity: 0.7;
-    }
-    .year{
-        text{
-            font-weight: bolder;
+    
+    .axis {
+        path.domain{
+            display: none;
         }
-        line{
-            stroke: black !important;
+        line {
+            stroke: #f7f7f7;            
+            opacity: 0.3;
+        }
+        .year{
+            text{
+                font-weight: bolder;
+            }
+            line{
+                stroke: #ccc;
+            }
         }
     }
+    .markerr{
+        .userBoundingBox{
+            fill: #fff;
+            opacity: 0;
+            .slow-transition;
+        }
+        &:hover{
+            .userBoundingBox{
+                fill: #fafafa;
+                opacity: 0.9;            
+            }
+            path{
+                fill: @highlight1 !important;
+                .slow-transition;
+            }            
+        }
+        &.bottom {
+            opacity: 0.7;
+        }
+
+    }
+    
 }
 
 
