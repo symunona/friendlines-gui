@@ -1,9 +1,13 @@
 <header>
-    <div id="userfilter" data-bind="foreach: actualRenderableUserListArray()">
+    <div id="userfilter" data-bind="foreach: actualRenderableUserList()">
         <p>
-            <span data-bind="style: {'background-color': $parent.isIn(id)?$parent.user.color(id):'#aaa', color:$parent.isIn(id)?'black':'#d1d1d1'}">
+            <span data-bind="style: {
+                'background-color': $parent.isIn(id)?$parent.user.color(id):'#aaa', 
+                color:$parent.isIn(id)?'black':'#d1d1d1'}">
                         <span data-bind="text: userName"></span>
-            <input type="checkbox" data-bind="checked: $parent.userToRenderMap[id], visible: $root.ui.filterVisible()">
+            <input type="checkbox" data-bind="
+                checked: $parent.userToRenderMap[id], 
+                visible: $root.ui.filterVisible()">
             </span>
         </p>
     </div>

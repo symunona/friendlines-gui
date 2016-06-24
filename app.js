@@ -58,7 +58,7 @@ define([
 
             console.log(preProcessedUserData);
             /* Update the renderable userlist */
-            filter.actualRenderableUserList(preProcessedUserData.filteredUsers);
+            filter.actualRenderableUserList(preProcessedUserData);
 
             app.render();
 
@@ -71,14 +71,18 @@ define([
                 xStep: 50,
                 yStep: 25,
                 yScale: 1,
+                layerOneKey: 'count',
+
             };
             /* Render everything*/
             ui.loading(true);
             ui.status('Drawing...');
+            var startDate = new Date();
             setTimeout(function() {
                 var drawing = app.actualProcessor()
                     .draw('#timeline', filter.usersToRender(), params, filter, colors);
                 ui.loading(false);
+                ui.status('Rendered in ' + ((new Date() - startDate) / 1000) + 'sec. Use dragging and zooming to navigate ');
             }, 0);
 
 

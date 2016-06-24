@@ -7,7 +7,6 @@
             <td title="Filter people who does not have at least this many months in a role where you exchanged messages" class="info">At least this many active month</td>
             <!--<td title="Use this number, to drop months below a number of messages, so they count as inactive" class="info">minimum month message</td>-->
             <td>order by 1</td>
-            <td>order by 2</td>
             <td>Descending</td>
         </tr>
         <tr>
@@ -17,10 +16,7 @@
             <td><input id="minactivefollowinmonth" type="number" data-bind="value: minActiveMonthCount.extend({ numeric: 0 }), enable: editable"></td>
             <!--<td><input id="minmonthcount" type="number" data-bind="value: minMonth.count, enable: editable"></td>-->
             <td>
-                <select id="orderby1" data-bind="options: $parent.consts.orderBys, optionsText: 'name', optionsValue: 'val', value: orderBy[0], enable: editable"></select>
-            </td>
-            <td>
-                <select id="orderby2" data-bind="options: $parent.consts.orderBys, optionsText: 'name', optionsValue: 'val', value: orderBy[1], enable: editable"></select>
+                <select id="orderby1" data-bind="options: $parent.consts.orderBys, optionsText: 'name', optionsValue: 'val', value: orderBy, enable: editable"></select>
             </td>
             <td><input type="checkbox" id="descendingOrderBy" data-bind="checked: descendingOrderBy, enable: editable"></td>
         </tr>
