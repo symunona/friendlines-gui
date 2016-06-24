@@ -26,11 +26,12 @@ define([
     'lib/filter',
     'text',
     'wrap',
-    'json'
+    'json',
+    'json!lib/utils/colors.json'
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, text, wrap) {
+], function(ko, templates, ui, processors, user, convert, filter, text, wrap, json, colors) {
 
     var vm = {
         error: ko.observable(''),
@@ -42,7 +43,6 @@ define([
 
         loadingtest: function() {
             ui.loading(true);
-
             ui.progress.percent(30);
             ui.status('');
         },
@@ -51,7 +51,9 @@ define([
         preRender: function() {
 
             /* Apply the filter, get the filtered userlist and metadata back. */
-            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), wrap.toJS(filter.actual));
+            var f = wrap.toJS(filter.actual);
+
+            var preProcessedUserData = vm.actualProcessor().process(user.userActivity(), f);
 
             console.log(preProcessedUserData);
             /* Update the renderable userlist */
@@ -70,7 +72,7 @@ define([
                 yScale: 1,
             };
             /* Render everything*/
-            var drawing = vm.actualProcessor().draw('#timeline', filter.usersToRender(), params);
+            var drawing = vm.actualProcessor().draw('#timeline', filter.usersToRender(), params, filter, colors);
 
             // TODO: bind event handlers to drawing
 

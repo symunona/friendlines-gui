@@ -110,6 +110,10 @@ header{
     width: 100%; overflow: hidden;
     position: absolute; z-index: -1; left: 0
 }
+#header-wrapper{
+    background-color: rgba(255,255,255,0.8);
+    padding-bottom: 10px;
+}
 
 #filterloader{
     text-align: right; margin-bottom: 4px; margin-top: 4px;
@@ -138,6 +142,34 @@ line{
 .highlight2 > rect, circle.highlight2{ fill: @highlight2; }
 .highlight3 > rect, circle.highlight3{ fill: @highlight3; }
 
+svg{
+    font: 10px sans-serif;
+    
+    rect.mainrect {
+        fill: #fff;
+    }
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #eee;
+    }
+    .x.axis line{
+        stroke: #f7f7f7;
+    }
+    .markerr.bottom {
+        opacity: 0.7;
+    }
+    .year{
+        text{
+            font-weight: bolder;
+        }
+        line{
+            stroke: black !important;
+        }
+    }
+}
+
+
 #statlist > li{ display: inline-block; img{margin-right: 10px}}
 ul > li{ margin-right: 20px; }
 ul > li > a{ cursor: pointer; text-decoration: underline;                 }
@@ -149,6 +181,11 @@ text{ cursor: pointer; }
     input[type='number']{ width: 40px; }
     table td{ border: 1px solid #eee;padding: 5px; }
     .info{ cursor: pointer }
+}
+.filter{display: inline-block;}
+.renderbutton{
+    display: inline-block;
+    height: 32px;
 }
 
 .hidden{display: none}
@@ -207,8 +244,6 @@ p.alert{ color: red;  }
 }
 
 .morepage{float: right}
-
-
 
 
 /* RESET */

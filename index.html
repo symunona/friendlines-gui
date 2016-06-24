@@ -44,7 +44,7 @@
     <!--<button data-bind='click: extract'>Extract test</button>
     <button data-bind='click: loadingtest'>loading test</button>-->
 
-    <div id="content-wrapper">
+    <div id="header-wrapper">
         <!-- Loading overlap -->
         <div class="loading" data-bind="visible: ui.loading()">
             <div id='status' data-bind="text: ui.status"></div>
@@ -89,10 +89,11 @@
         <!-- Filter Manager -->
         <!--<div class='filtermanager' data-bind="component: 'filter'"></div>-->
 
-        <!-- User filter -->
-        <div class='filter' data-bind="visible: ui.usersVisible(), component: 'userfilter'"></div>
 
     </div>
+
+    <!-- User filter -->
+    <div class='filter' data-bind="visible: ui.usersVisible(), component: 'userfilter'"></div>
 
     <!-- Status bar -->
     <div data-bind="template: 'status'"></div>

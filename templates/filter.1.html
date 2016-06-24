@@ -12,9 +12,9 @@
         </tr>
         <tr>
             <!--<td><input type="submit" value="Go!"></td>-->
-            <td><input id="minsumcount" type="number" data-bind="value: min.count, enable: editable"></td>
-            <td><input id="minsumlength" type="number" data-bind="value: min.length, enable: editable"></td>
-            <td><input id="minactivefollowinmonth" type="number" data-bind="value: minActiveMonthCount, enable: editable"></td>
+            <td><input id="minsumcount" type="number" data-bind="value: min.count.extend({ numeric: 0 }), enable: editable"></td>
+            <td><input id="minsumlength" type="number" data-bind="value: min.length.extend({ numeric: 0 }), enable: editable"></td>
+            <td><input id="minactivefollowinmonth" type="number" data-bind="value: minActiveMonthCount.extend({ numeric: 0 }), enable: editable"></td>
             <!--<td><input id="minmonthcount" type="number" data-bind="value: minMonth.count, enable: editable"></td>-->
             <td>
                 <select id="orderby1" data-bind="options: $parent.consts.orderBys, optionsText: 'name', optionsValue: 'val', value: orderBy[0], enable: editable"></select>
