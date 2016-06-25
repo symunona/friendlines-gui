@@ -164,7 +164,6 @@ header #resetBtn {
 }
 #header-wrapper {
   background-color: rgba(255, 255, 255, 0.8);
-  padding-bottom: 10px;
 }
 #filterloader {
   text-align: right;
@@ -291,21 +290,28 @@ text {
 #statlist .menu .menulist div:hover {
   background-color: #ccc;
 }
-#filter form {
-  padding: 10px;
-}
-#filter input[type='number'] {
-  width: 40px;
-}
-#filter table td {
-  border: 1px solid #eee;
-  padding: 5px;
-}
-#filter .info {
-  cursor: pointer;
+.filter-wrapper > div {
+  display: inline-block;
+  vertical-align: top;
 }
 .filter {
   display: inline-block;
+}
+.filter form {
+  padding: 2px;
+}
+.filter input[type='number'] {
+  width: 40px;
+}
+.filter table td {
+  border: 1px solid #eee;
+  padding: 5px;
+}
+.filter .info {
+  cursor: pointer;
+}
+.filter input {
+  margin: 3px;
 }
 .renderbutton {
   border: 0;

@@ -77,12 +77,13 @@
 
         <!--Search bar for later-->
 
-        <!-- Render button -->
-        <button class='renderbutton' data-bind="click: preRender">☈ender</button>
+        <div class='filter-wrapper'>
+            <!-- Render button -->
+            <div><button class='renderbutton' data-bind="click: preRender">☈ender</button></div>
 
-        <!-- Filter #1 -->
-        <div class='filter' data-bind="component: 'filter'"></div>
-
+            <!-- Filter #1 -->
+            <div class='filter' data-bind="component: 'filter'"></div>
+        </div>
         <!-- Filter Manager -->
         <!--<div class='filtermanager' data-bind="component: 'filter'"></div>-->
 
