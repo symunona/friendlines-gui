@@ -301,7 +301,7 @@ text {
   padding: 2px;
 }
 .filter input[type='number'] {
-  width: 40px;
+  width: 80px;
 }
 .filter table td {
   border: 1px solid #eee;
