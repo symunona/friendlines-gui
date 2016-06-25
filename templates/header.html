@@ -3,6 +3,15 @@
 
         <ul id='statlist'>
             <!--<li><img src='assets/logo.png' class="headericon"></li>-->
+            <li class="menu">
+                <a data-bind='click: ui.menuVisible.bind(this,!ui.menuVisible())' class='menu'>☰</a>
+                <div data-bind='visible: ui.menuVisible()' class='menulist'>
+                    <div data-bind="click: extract">Open new ZIP</div>
+                    <div data-bind="click: extract">Export image</div>
+                    <div>Share</div>
+                    <!--<div></div>-->
+                </div>
+            </li>
             <li class="username" data-bind="text: user.userName()"></li>
             <!-- ko foreach: processors-->
             <li>

@@ -7,6 +7,9 @@
 body{
     font-family: Verdana;
     font-size: 10px;
+    height: 90%;
+
+    overflow: hidden;
 
     -webkit-user-select: none;
     -moz-user-select: -moz-none;
@@ -103,7 +106,10 @@ header{
 
 #userfilter{
     padding-top: 6px; margin-left: @padding;
-
+    width: 100px;
+    height: ~"calc( 400px )";
+    overflow-y: auto;
+    overflow-x: hidden;
     &>p>span{
         color: white; display: inline-block; cursor: pointer;
         padding: 2px; margin-right: 6px; margin-bottom: 6px;
@@ -111,7 +117,7 @@ header{
 }
 
 #content{
-    height: calc( 100% );
+    // height: calc( 100% );
     width: 100%; overflow: hidden;
     position: absolute; z-index: -1; left: 0
 }
@@ -191,12 +197,10 @@ svg{
                 .slow-transition;
             }            
         }
-        &.bottom {
+        .bottom {
             opacity: 0.7;
         }
-
     }
-    
 }
 
 
@@ -206,6 +210,31 @@ ul > li > a{ cursor: pointer; text-decoration: underline;                 }
 .selected{ font-weight: bold; }
 text{ cursor: pointer; }
 
+#statlist .menu {
+    
+    a{
+        text-decoration: none;
+    }
+    .menulist{
+        display: block;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        background: white;
+        color: #888;        
+        position: absolute;
+        left: 0;
+        top: 35px;
+        border: #eee 2px solid;
+        div{
+            display: block;
+            padding: 12px;
+            cursor: pointer;
+            &:hover{
+                background-color: #ccc;
+            }
+        }
+    }
+}
+
 #filter {
     form{ padding: 10px; }
     input[type='number']{ width: 40px; }
@@ -214,8 +243,27 @@ text{ cursor: pointer; }
 }
 .filter{display: inline-block;}
 .renderbutton{
+    border: 0;
     display: inline-block;
-    height: 32px;
+    margin: 5px;
+    height: 52px;
+    width: 62px;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    color: white;
+    
+    &:hover{
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
 }
 
 .hidden{display: none}
