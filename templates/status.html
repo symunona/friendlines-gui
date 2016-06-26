@@ -1,15 +1,16 @@
 <footer class='statusfooter' data-bind="click: ui.statusVisible.bind(this,!ui.statusVisible()), css:{open: ui.statusVisible()}">
 
-    <button class="sharebutton" data-bind="click: share, css: {disabledHighlight: ui.shareVisible()}">Share</button>
     <span class="caret" data-bind="text: ui.statusVisible()?'▼':'more info ▲'"></span>
-
 
     <div id='statusloading'></div>
     <span id='status' data-bind="text: ui.status, style:{'color':ui.statusColor()==ui.defaultStatusColor?'black':'white','background-color':ui.statusColor()}"></span>
     <div class="userinfo">
-        <!--<h2 data-bind="text: selectedUser"></h2>
         <div data-bind="if: selectedUser()">
-            <table class="sumdata">
+            <h2 data-bind="text: selectedUser().userName"></h2>
+
+            <pre data-bind="text: JSON.stringify(selectedUser().sums, null,2)"></pre>
+
+            <!--<table class="sumdata">
                 <thead>
                     <tr>
                         <th></th>
@@ -20,23 +21,24 @@
                         <th>Sum</th>
                     </tr>
                 </thead>
-                <tbody>-->
-        <!-- zko foreach: Object.keys(userFilterMap()[selectedUser()].sums.sum) -->
-        <!--<tr data-bind="attr:{title: $root.emotions[$data]?$root.emotions[$data].join(' '):''}">
+                <tbody>
+                    
+                    <pre data-bind="text: JSON.stringify(Object.keys(selectedUser().sums))"></pre>
+                    
+                    <tr data-bind="attr:{title: $root.emotions[$data]?$root.emotions[$data].join(' '):''}">
                         <td data-bind="text: $data"></td>
                         <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.inbound[$data]"></td>
                         <td data-bind="text: $data"></td>
                         <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.outbound[$data]"></td>
                         <td data-bind="text: $data"></td>
                         <td data-bind="text: $root.userFilterMap()[$root.selectedUser()].sums.sum[$data]"></td>
-                    </tr>-->
-        <!-- /zko -->
-        <!--</tbody>
-            </table>
+                    </tr>
+                </tbody>
+            </table>-->
 
             * These statistics are provided by the emoticons used in messages, according to <a href="#" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://en.wikipedia.org/wiki/List_of_emoticons')">Wikipedia's table</a>.
 
-        </div>-->
+        </div>
 
     </div>
 

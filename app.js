@@ -24,6 +24,7 @@ define([
     'lib/user',
     'lib/convert',
     'lib/filter',
+    'lib/share',
     'text',
     'wrap',
     'json',
@@ -31,7 +32,8 @@ define([
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, text, wrap, json, colors) {
+
+], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors) {
 
     var app = {
         error: ko.observable(''),
@@ -41,13 +43,29 @@ define([
         processors: processors,
         filter: filter,
         colors: colors,
+        lastOpenedList: ko.observableArray(convert.getLastOpenedList()),
+        convert: convert,
+        share: share,
+
+        selectedUser: ko.observable(),
+
+        link: ko.observable(),
 
         loadingtest: function() {
             ui.loading(true);
             ui.progress.percent(30);
             ui.status('');
         },
-        share: function() {},
+
+        loadFromCache: function(fileName) {
+            convert.loadFromCache(fileName);
+            app.preRender();
+        },
+        extract: function() {
+            convert.selectFile().done(function() {
+                app.preRender();
+            });
+        },
 
         preRender: function() {
 
@@ -56,7 +74,6 @@ define([
 
             var preProcessedUserData = app.actualProcessor().process(user.userActivity(), f);
 
-            console.log(preProcessedUserData);
             /* Update the renderable userlist */
             filter.actualRenderableUserList(preProcessedUserData);
 
@@ -72,15 +89,15 @@ define([
                 yStep: 25,
                 yScale: 1,
                 layerOneKey: 'count',
-
             };
+
             /* Render everything*/
             ui.loading(true);
             ui.status('Drawing...');
             var startDate = new Date();
             setTimeout(function() {
                 var drawing = app.actualProcessor()
-                    .draw('#timeline', filter.usersToRender(), params, filter, colors);
+                    .draw('#timeline', filter.usersToRender(), params, filter, app);
                 ui.loading(false);
                 ui.status('Rendered in ' + ((new Date() - startDate) / 1000) + 'sec. Use dragging and zooming to navigate ');
             }, 0);
@@ -96,10 +113,21 @@ define([
 
         actualProcessor: ko.observable(),
 
-        extract: convert.selectFile
 
     };
 
+    /* Thank you: http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-of-resize-event-and-only-then-perform-an-ac */
+    function resizedw() {
+        if (!app.loading()) {
+            app.render();
+        }
+    }
+
+    var doit;
+    window.onresize = function() {
+        clearTimeout(doit);
+        doit = setTimeout(resizedw, 100);
+    };
 
     /* Loads last user who have been loaded */
     convert.init();

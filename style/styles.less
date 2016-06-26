@@ -36,7 +36,7 @@ header{
             &.active{ font-weight: bold; }
         }
     }
-    .filtertoggler, .searchtoggler, .userstoggler{ float: right; cursor: pointer; margin-right: 10px; &:hover{text-decoration: underline;}}
+    .filtertoggler, .searchtoggler, .userstoggler{ float: right; }
 
     &#search{
         height: 40px;
@@ -46,7 +46,10 @@ header{
     #resetBtn{float: right;}
     
 }
-
+.toggler{
+    cursor: pointer; margin-right: 10px;
+    &:hover{text-decoration: underline;}
+}
 
 .blur{ filter:blur(4px); -o-filter:blur(4px); -ms-filter:blur(4px); -moz-filter:blur(4px); -webkit-filter:blur(4px);}
 
@@ -104,17 +107,35 @@ header{
     background-color: red;
 }
 
-#userfilter{
-    padding-top: 6px; margin-left: @padding;
-    width: 100px;
-    height: ~"calc( 400px )";
+
+.user-filter{
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    max-height: ~"calc( 100% - 150px )";
+    
+    min-width: 100px;
+    min-height: 20px;
     overflow-y: auto;
     overflow-x: hidden;
-    &>p>span{
-        color: white; display: inline-block; cursor: pointer;
-        padding: 2px; margin-right: 6px; margin-bottom: 6px;
+
+    background: rgba(255,255,255,0.9);
+    
+    &.opened{
+        min-height: ~"calc( 100% - 120px )";
+    }
+
+    div.content{
+        padding-top: 6px; 
+            
+        &>p>span{
+            color: white; display: inline-block; cursor: pointer;
+            padding: 2px; margin-right: 6px; margin-bottom: 6px;
+        }
     }
 }
+
 
 #content{
     // height: calc( 100% );
@@ -122,9 +143,9 @@ header{
     position: absolute; z-index: -1; left: 0
 }
 #header-wrapper{
-    background-color: rgba(255,255,255,0.8);
-    
+    background-color: rgba(255,255,255,0.8);    
 }
+
 
 #filterloader{
     text-align: right; margin-bottom: 4px; margin-top: 4px;
@@ -210,6 +231,13 @@ ul > li > a{ cursor: pointer; text-decoration: underline;                 }
 .selected{ font-weight: bold; }
 text{ cursor: pointer; }
 
+i.i{
+    display: inline-block;
+    height: 12px; width: 12px; border-radius: 6px;
+    background: blue; color: white;
+    text-align: center;
+}
+
 #statlist .menu {
     
     a{
@@ -228,7 +256,10 @@ text{ cursor: pointer; }
             display: block;
             padding: 12px;
             cursor: pointer;
-            &:hover{
+            &.noclick{
+                cursor: default;
+            }
+            &:not(.noclick):hover{
                 background-color: #ccc;
             }
         }
@@ -239,7 +270,6 @@ text{ cursor: pointer; }
     vertical-align: top;
 }
 .filter {
-    display: inline-block;
     form{ padding: 2px; }
     input[type='number']{ width: 80px; }
     table td{ border: 1px solid #eee;padding: 5px; }
@@ -322,10 +352,25 @@ p.alert{ color: red;  }
 
 .center{text-align: center;}
 
-.tmp > a{
-    position: absolute; bottom: 5px; right: 5px; 
+.tmp > a{     
     color: white; text-decoration: none;
     &:hover{text-decoration: underline;}    
+}
+
+#primary-header{
+    color: white;
+    a{
+        cursor: pointer;
+        &:hover{
+            // background: rgba(255,255,255,0.1);
+            color: #aff;
+            text-decoration: none;
+        }
+    }
+    .right{ float: right; }
+    .share{
+        float: right; margin-right: 10px;
+    }
 }
 
 .morepage{float: right}

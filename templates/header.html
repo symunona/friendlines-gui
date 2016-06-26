@@ -1,14 +1,28 @@
 <header id="primary-header">
     <nav id="primary-navigation">
 
+
+        <div class='tmp right'><a href="http://theminimalproject.dyndns.hu" target="_blank">™P</a></div>
+        <div class="share right">
+            <a data-bind='click: share.share'><i class="fa fa-share-alt"></i></a>
+        </div>
+
+
         <ul id='statlist'>
             <!--<li><img src='assets/logo.png' class="headericon"></li>-->
             <li class="menu">
                 <a data-bind='click: ui.menuVisible.bind(this,!ui.menuVisible())' class='menu'>☰</a>
                 <div data-bind='visible: ui.menuVisible()' class='menulist'>
-                    <div data-bind="click: extract">Open new ZIP</div>
-                    <div data-bind="click: extract">Export image</div>
-                    <div>Share</div>
+                    <div data-bind="click: function(){ extract(); ui.menuVisible(false)}">Open new ZIP</div>
+                    <div data-bind="click: function(){ ui.menuVisible(false)}">Export image</div>
+                    <!--<div>Share</div>-->
+                    <div class="noclick">
+                        <hr>
+                    </div>
+                    <div class="noclick">Recently opened:</div>
+                    <!-- ko foreach: lastOpenedList() -->
+                    <div data-bind="text: $data, click: function(){$root.ui.menuVisible(false);$root.loadFromCache($data); }"></div>
+                    <!-- /ko -->
                     <!--<div></div>-->
                 </div>
             </li>
@@ -25,5 +39,5 @@
         </ul>
 
     </nav>
-    <div class='tmp'><a href="http://theminimalproject.dyndns.hu" target="_blank">™P</a></div>
+
 </header>

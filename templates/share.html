@@ -1,8 +1,7 @@
-
-<div id="share" data-bind="visible: shareVisible(), with: uploadModel()">
-    <div class="loading" data-bind="visible: $root.loading()"></div>
+<div id="share" data-bind="with: uploadModel()">
+    <div class="loading" data-bind="visible: $root.ui.loading()"></div>
     <div id="contribute">
-        <button class="closebutton" data-bind="click: $root.shareVisible.bind(this,false)">X</button>
+        <button class="closebutton" data-bind="click: $root.ui.shareVisible.bind(this,false)">X</button>
         <h2>Share</h2>
         <p>&nbsp;</p>
         <input id='nameinput' type="text" data-bind="value: name" placeholder="name of your image">
@@ -26,8 +25,8 @@
         <textarea rows="1" cols="50" onclick="this.focus();this.select()" readonly="readonly" data-bind="value: $root.link" placeholder="url will appear here">                
             </textarea>
         <div class="center">
-            <button data-bind="click: $root.upload, visible: !$root.link()" class="sharebuttonform">Share</button>
-            <button data-bind="click: $root.upload, visible: $root.link()" class="newshare">Create new share</button>
+            <button data-bind="click: $parent.upload.bind($root), visible: !$root.link()" class="sharebuttonform">Share</button>
+            <button data-bind="click: $parent.upload.bind($root), visible: $root.link()" class="newshare">Create new share</button>
         </div>
     </div>
 </div>
