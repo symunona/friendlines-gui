@@ -35,6 +35,7 @@ define([
 
 ], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors) {
 
+
     var app = {
         error: ko.observable(''),
         templates: templates,
@@ -88,6 +89,7 @@ define([
                 xStep: 50,
                 yStep: 25,
                 yScale: 1,
+                divider: 6,
                 layerOneKey: 'count',
             };
 
@@ -100,6 +102,8 @@ define([
                     .draw('#timeline', filter.usersToRender(), params, filter, app);
                 ui.loading(false);
                 ui.status('Rendered in ' + ((new Date() - startDate) / 1000) + 'sec. Use dragging and zooming to navigate ');
+                filter.save();
+
             }, 0);
 
 

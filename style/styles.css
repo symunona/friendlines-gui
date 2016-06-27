@@ -297,6 +297,7 @@ i.i {
   background: white;
   color: #888;
   position: absolute;
+  z-index: 99;
   left: 0;
   top: 35px;
   border: #eee 2px solid;
