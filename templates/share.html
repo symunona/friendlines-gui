@@ -1,7 +1,7 @@
 <div id="share" data-bind="with: uploadModel()">
     <div class="loading" data-bind="visible: $root.ui.loading()"></div>
     <div id="contribute">
-        <button class="closebutton" data-bind="click: $root.ui.shareVisible.bind(this,false)">X</button>
+        <button class="closebutton" data-bind="click: $root.ui.visible.share.bind(this,false)">X</button>
         <h2>Share</h2>
         <p>&nbsp;</p>
         <input id='nameinput' type="text" data-bind="value: name" placeholder="name of your image">

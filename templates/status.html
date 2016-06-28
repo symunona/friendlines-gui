@@ -1,6 +1,6 @@
-<footer class='statusfooter' data-bind="click: ui.statusVisible.bind(this,!ui.statusVisible()), css:{open: ui.statusVisible()}">
+<footer class='statusfooter' data-bind="click: ui.visible.status.bind(this,!ui.visible.status()), css:{open: ui.visible.status()}">
 
-    <span class="caret" data-bind="text: ui.statusVisible()?'▼':'more info ▲'"></span>
+    <span class="caret" data-bind="text: ui.visible.status()?'▼':'more info ▲'"></span>
 
     <div id='statusloading'></div>
     <span id='status' data-bind="text: ui.status, style:{'color':ui.statusColor()==ui.defaultStatusColor?'black':'white','background-color':ui.statusColor()}"></span>

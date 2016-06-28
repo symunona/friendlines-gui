@@ -67,7 +67,7 @@
         <!-- Filter settings page -->
         <header class='contorlline'>
             <p class='filtertoggler toggler'>
-                <a data-bind="click: ui.filterVisible.bind(this,!ui.filterVisible())">Filter: <span data-bind="text: ui.filterVisible()?'-':'+'"></span> </a>
+                <a data-bind="click: ui.visible.filter.bind(this,!ui.visible.filter())">Filter: <span data-bind="text: ui.visible.filter()?'-':'+'"></span> </a>
             </p>
             <!--<p class='searchtoggler'>
                         <a data-bind="click: searchVisible.bind(this,!searchVisible())">Search<span class='searchindicator'></span> <a onclick='resetSearch()', style="display: none">x</a> </a>
@@ -76,7 +76,7 @@
 
         <!--Search bar for later-->
 
-        <div class='filter-wrapper' data-bind="visible: ui.filterVisible()">
+        <div class='filter-wrapper' data-bind="visible: ui.visible.filter()">
             <!-- Render button -->
             <div><button class='renderbutton' data-bind="click: preRender">☈ender</button></div>
 
@@ -89,19 +89,19 @@
     </div>
 
     <!-- User filter -->
-    <div class='user-filter' data-bind="visible: ui.filterVisible(), css:{opened: ui.usersVisible()}">
+    <div class='user-filter' data-bind="visible: ui.visible.filter(), css:{opened: ui.visible.users()}">
         <p class='userstoggler toggler'>
-            <a data-bind="click: ui.usersVisible.bind(this,!ui.usersVisible())">User filter 
-                <span data-bind="text: ui.usersVisible()?'-':'+'"></span> </a>
+            <a data-bind="click: ui.visible.users.bind(this,!ui.visible.users())">User filter 
+                <span data-bind="text: ui.visible.users()?'-':'+'"></span> </a>
         </p>
-        <div data-bind="visible: ui.usersVisible(), component: 'userfilter'"></div>
+        <div data-bind="visible: ui.visible.users(), component: 'userfilter'"></div>
     </div>
 
     <!-- Status bar -->
     <div data-bind="template: 'status'"></div>
 
     <!-- Share window -->
-    <div class="share" data-bind="component: 'share', visible: ui.shareVisible()"></div>
+    <div class="share" data-bind="component: 'share', visible: ui.visible.share()"></div>
 
 
     <input style="display:none;" id="file-dialog" type="file" />
@@ -123,7 +123,7 @@
     <script src="lib/utils/knockout.wrap.js"></script>-->
 
 
-    <!--<script src="lib/vendor/svg.filter.min.js"></script>-->
+    <!--<script src="lib/vendor/svg.visible.min.js"></script>-->
     <!--<script src="lib/consts.js"></script>
     <script src="lib/consts.js"></script>
     <script src="lib/client/client-utils.js"></script>

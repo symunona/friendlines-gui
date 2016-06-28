@@ -461,10 +461,14 @@ p.alert {
 }
 #primary-header a {
   cursor: pointer;
+  text-decoration: none;
 }
 #primary-header a:hover {
   color: #aff;
   text-decoration: none;
+}
+#primary-header a.active {
+  text-decoration: underline;
 }
 #primary-header .right {
   float: right;

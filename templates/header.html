@@ -11,17 +11,17 @@
         <ul id='statlist'>
             <!--<li><img src='assets/logo.png' class="headericon"></li>-->
             <li class="menu">
-                <a data-bind='click: ui.menuVisible.bind(this,!ui.menuVisible())' class='menu'>☰</a>
-                <div data-bind='visible: ui.menuVisible()' class='menulist'>
-                    <div data-bind="click: function(){ extract(); ui.menuVisible(false)}">Open new ZIP</div>
-                    <div data-bind="click: function(){ ui.menuVisible(false)}">Export image</div>
+                <a data-bind='click: ui.visible.menu.bind(this,!ui.visible.menu())' class='menu'>☰</a>
+                <div data-bind='visible: ui.visible.menu()' class='menulist'>
+                    <div data-bind="click: function(){ extract(); ui.visible.menu(false)}">Open new ZIP</div>
+                    <div data-bind="click: function(){ ui.visible.menu(false)}">Export image</div>
                     <!--<div>Share</div>-->
                     <div class="noclick">
                         <hr>
                     </div>
                     <div class="noclick">Recently opened:</div>
                     <!-- ko foreach: lastOpenedList() -->
-                    <div data-bind="text: $data, click: function(){$root.ui.menuVisible(false);$root.loadFromCache($data); }"></div>
+                    <div data-bind="text: $data, click: function(){$root.ui.visible.menu(false);$root.loadFromCache($data); }"></div>
                     <!-- /ko -->
                     <!--<div></div>-->
                 </div>
@@ -31,7 +31,10 @@
             <li>
                 <a data-bind="  attr: {'data-index': $index}, 
                                     text: name, 
-                                    click: $root.actualProcessor.bind(this,$data), 
+                                    click: function(){
+                                        if ($root.actualProcessor()?$root.actualProcessor().name != name:false)
+                                            $root.switchProcessor($data);
+                                    }, 
                                     css:{active: $root.actualProcessor()?$root.actualProcessor().name == name:false}"></a>
             </li>
             <!-- /ko -->

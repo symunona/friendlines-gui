@@ -362,11 +362,16 @@ p.alert{ color: red;  }
     color: white;
     a{
         cursor: pointer;
+        text-decoration: none;
         &:hover{
             // background: rgba(255,255,255,0.1);
             color: #aff;
             text-decoration: none;
         }
+        &.active{
+            text-decoration: underline;    
+        }
+
     }
     .right{ float: right; }
     .share{

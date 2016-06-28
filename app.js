@@ -28,13 +28,15 @@ define([
     'text',
     'wrap',
     'json',
-    'json!lib/utils/colors.json'
+    'json!lib/utils/colors.json',
+    'storage'
 
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors) {
+], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors, storage) {
 
+    const LAST_PROCESSOR = 'lastProcessor';
 
     var app = {
         error: ko.observable(''),
@@ -84,15 +86,7 @@ define([
         render: function() {
             // TODO: Check if this filter's SVG is already cached
             // generate param, filter, userlist and processorId hash
-
-            var params = {
-                xStep: 50,
-                yStep: 25,
-                yScale: 1,
-                divider: 6,
-                layerOneKey: 'count',
-            };
-
+            var params = app.actualProcessor().params;
             /* Render everything*/
             ui.loading(true);
             ui.status('Drawing...');
@@ -106,13 +100,14 @@ define([
 
             }, 0);
 
-
-            // TODO: bind event handlers to drawing
-
-            // TODO: If not cached, save it to the cache
         },
         test: function() {
 
+        },
+        switchProcessor: function(processor) {
+            app.actualProcessor(processor);
+            app.render();
+            storage.save(LAST_PROCESSOR, processor.name);
         },
 
         actualProcessor: ko.observable(),
@@ -120,9 +115,11 @@ define([
 
     };
 
+
+
     /* Thank you: http://stackoverflow.com/questions/5489946/jquery-how-to-wait-for-the-end-of-resize-event-and-only-then-perform-an-ac */
     function resizedw() {
-        if (!app.loading()) {
+        if (!ui.loading()) {
             app.render();
         }
     }
@@ -136,8 +133,15 @@ define([
     /* Loads last user who have been loaded */
     convert.init();
 
-    /* Loads the first processor and drawer */
-    app.actualProcessor(processors[0]);
+    /* Loads the last processor and drawer */
+    var lastProcessor = storage.load(LAST_PROCESSOR);
+    if (lastProcessor) {
+        app.actualProcessor(_.findWhere(processors, {
+            name: lastProcessor
+        }));
+    } else {
+        app.actualProcessor(processors[0]);
+    }
 
     // DEBUG
     window.ko = ko;
