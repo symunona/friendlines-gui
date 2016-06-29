@@ -53,10 +53,11 @@ header{
 
 .blur{ filter:blur(4px); -o-filter:blur(4px); -ms-filter:blur(4px); -moz-filter:blur(4px); -webkit-filter:blur(4px);}
 
-.loading, .overlay, .nouser{
+.loading, .overlay, .nouser, .popup-wrapper{
     position: absolute; z-index: 9999;
     height: 100%; width: 100%; top: 0; left: 0;
     background-color: rgba(128,128,128,0.5);
+    
 }
 .nouser{
     text-align: center;
@@ -328,6 +329,12 @@ p.alert{ color: red;  }
     margin-top: 10px;
 }
 
+.sumdata{
+    td{
+        padding: 3px;
+        border: 1px solid #eee;
+    }
+}
 
 .closebutton{position: absolute; right: -10px; top:-10px; width:30px; height: 30px; border-radius: 15px; border: 1px solid #555; line-height: 30px; cursor:pointer;
     &:hover{background: white;}
@@ -337,7 +344,7 @@ p.alert{ color: red;  }
      .overlay;    
 }
 
-#contribute{
+#contribute, .popup-window{
     position: absolute; width: 600px; height: 500px;
     left: ~"calc( 50% - 300px )"; top:  ~"calc( 50% - 250px )";
     background: white; padding: 20px; border-radius: 25px;

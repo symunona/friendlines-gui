@@ -29,12 +29,14 @@ define([
     'wrap',
     'json',
     'json!lib/utils/colors.json',
-    'storage'
+    'storage',
+    'lib/utils/popup',
+    'lib/stat'
 
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors, storage) {
+], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors, storage, popup, stat) {
 
     const LAST_PROCESSOR = 'lastProcessor';
 
@@ -49,6 +51,8 @@ define([
         lastOpenedList: ko.observableArray(convert.getLastOpenedList()),
         convert: convert,
         share: share,
+        popup: popup,
+        stat: stat,
 
         selectedUser: ko.observable(),
 

@@ -12,6 +12,7 @@
   "author": "Bendeguy",
   "license": "ISC",
   "dependencies": {
+    "analyze-facebook-history": "git+https://github.com/symunona/analyze-facebook-history.git",
     "d3": "^3.5.17",
     "font-awesome": "^4.6.3",
     "jquery": "^3.0.0",

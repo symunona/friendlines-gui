@@ -6,7 +6,9 @@
     <span id='status' data-bind="text: ui.status, style:{'color':ui.statusColor()==ui.defaultStatusColor?'black':'white','background-color':ui.statusColor()}"></span>
     <div class="userinfo">
         <div data-bind="if: selectedUser()">
-            <h2 data-bind="text: selectedUser().userName"></h2>
+            <h2>
+                <a data-bind="click: stat.openUser.bind(this, selectedUser().id), text: selectedUser().userName"></a>
+            </h2>
 
             <pre data-bind="text: JSON.stringify(selectedUser().sums, null,2)"></pre>
 

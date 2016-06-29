@@ -1,0 +1,35 @@
+<div style="overflow: auto; height: 480px;">
+
+    <h1 data-bind="text: stat.userName, style: {'background-color': userColor}"></h1>
+    <div>
+        <p>First message: <span data-bind="text: stat.firstMessageDate"></span></p>
+        <p>Last message: <span data-bind="text: stat.lastMessageDate"></span></p>
+    </div>
+    <table class="sumdata">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Inbound</th>
+
+                <th>Outbound</th>
+
+                <th>Sum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--ko foreach: Object.keys(emotions)-->
+            <tr data-bind="attr:{title: $root.emotions[$data]}">
+                <td data-bind="text: $data"></td>
+                <td data-bind="text: $root.stat.inbound[$data] || 0"></td>
+                <td data-bind="text: $root.stat.outbound[$data] || 0"></td>
+                <td data-bind="text: $root.stat.sums[$data] || 0"></td>
+            </tr>
+            <!--/ko-->
+        </tbody>
+    </table>
+
+    <!--<pre data-bind="text: JSON.stringify(stat, null, 2)"></pre>
+
+    <pre data-bind="text: JSON.stringify(emotions, null, 2)"></pre>-->
+
+</div>

@@ -63,7 +63,8 @@ header #resetBtn {
 }
 .loading,
 .overlay,
-.nouser {
+.nouser,
+.popup-wrapper {
   position: absolute;
   z-index: 9999;
   height: 100%;
@@ -398,6 +399,10 @@ p.alert {
 .newshare {
   margin-top: 10px;
 }
+.sumdata td {
+  padding: 3px;
+  border: 1px solid #eee;
+}
 .closebutton {
   position: absolute;
   right: -10px;
@@ -421,7 +426,8 @@ p.alert {
   left: 0;
   background-color: rgba(128, 128, 128, 0.5);
 }
-#contribute {
+#contribute,
+.popup-window {
   position: absolute;
   width: 600px;
   height: 500px;
@@ -432,11 +438,13 @@ p.alert {
   border-radius: 25px;
   border: 1px solid #777;
 }
-#contribute textarea {
+#contribute textarea,
+.popup-window textarea {
   width: 596px;
   resize: none;
 }
-#contribute p {
+#contribute p,
+.popup-window p {
   line-height: 2em;
 }
 #uploadpreview {
