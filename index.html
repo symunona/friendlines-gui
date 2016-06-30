@@ -104,8 +104,8 @@
     <div class="share" data-bind="component: 'share', visible: ui.visible.share()"></div>
 
     <!-- Share window -->
-    <div class="popup-wrapper" data-bind='visible: popup.active(), click: popup.close' style="display: none;">
-        <div class="popup-window">
+    <div class="popup-wrapper" data-bind='visible: popup.active()' style="display: none;">
+        <div class="popup-window" data-bind="click: function(context, event){ event.preventDefault(); }">
             <button class="closebutton" data-bind="click: popup.close">X</button>
             <div id="popup"></div>
         </div>

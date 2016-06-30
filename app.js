@@ -31,12 +31,15 @@ define([
     'json!lib/utils/colors.json',
     'storage',
     'lib/utils/popup',
-    'lib/stat'
+    'lib/stat',
+    'lib/search'
 
 
 
 
-], function(ko, templates, ui, processors, user, convert, filter, share, text, wrap, json, colors, storage, popup, stat) {
+], function(ko, templates, ui, processors, user, convert,
+    filter, share, text, wrap, json,
+    colors, storage, popup, stat, search) {
 
     const LAST_PROCESSOR = 'lastProcessor';
 
@@ -53,6 +56,7 @@ define([
         share: share,
         popup: popup,
         stat: stat,
+        search: search,
 
         selectedUser: ko.observable(),
 

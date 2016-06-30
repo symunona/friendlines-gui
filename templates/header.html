@@ -7,6 +7,10 @@
             <a data-bind='click: share.share'>Share <i class="fa fa-share-alt"></i></a>
         </div>
 
+        <div class="search right">
+            <input type="text" data-bind='event:{keydown:  search.searchKeyDown}'>
+        </div>
+
 
         <ul id='statlist'>
             <!--<li><img src='assets/logo.png' class="headericon"></li>-->

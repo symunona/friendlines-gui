@@ -16,6 +16,7 @@
     "d3": "^3.5.17",
     "font-awesome": "^4.6.3",
     "jquery": "^3.0.0",
+    "jquery-highlight": "^3.3.0",
     "knockout": "^3.4.0",
     "less": "^2.7.1",
     "moment": "^2.13.0",

@@ -46,6 +46,22 @@ header{
     #resetBtn{float: right;}
     
 }
+
+.search-results{
+    -webkit-user-select: auto;
+
+    .message-header{
+        font-size: large;
+        padding: 5px;
+    }
+    .message{
+        padding: 5px;
+    }
+    .highlight{
+        background-color: #ff5500;
+    }
+}
+
 .toggler{
     cursor: pointer; margin-right: 10px;
     &:hover{text-decoration: underline;}
@@ -353,6 +369,10 @@ p.alert{ color: red;  }
     textarea{ width: 596px; resize: none;}
     p{ line-height: 2em; }    
 }
+.popup-overflow-wrapper{
+    height: 470px; overflow-x: none; overflow-y: auto;
+}
+
 #uploadpreview{
     width: 600px; height: 200px; cursor: move;
     overflow: hidden; border: 1px solid #aaa;

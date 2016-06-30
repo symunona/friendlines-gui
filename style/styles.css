@@ -47,6 +47,19 @@ header#search {
 header #resetBtn {
   float: right;
 }
+.search-results {
+  -webkit-user-select: auto;
+}
+.search-results .message-header {
+  font-size: large;
+  padding: 5px;
+}
+.search-results .message {
+  padding: 5px;
+}
+.search-results .highlight {
+  background-color: #ff5500;
+}
 .toggler {
   cursor: pointer;
   margin-right: 10px;
@@ -446,6 +459,11 @@ p.alert {
 #contribute p,
 .popup-window p {
   line-height: 2em;
+}
+.popup-overflow-wrapper {
+  height: 470px;
+  overflow-x: none;
+  overflow-y: auto;
 }
 #uploadpreview {
   width: 600px;
