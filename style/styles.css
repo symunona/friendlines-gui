@@ -321,6 +321,9 @@ i.i {
   color: white;
   text-align: center;
 }
+.clickable {
+  cursor: pointer;
+}
 #statlist .menu a {
   text-decoration: none;
 }

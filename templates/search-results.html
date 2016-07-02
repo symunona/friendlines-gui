@@ -4,9 +4,14 @@
         <div data-bind="foreach: messages">
             <div class="message-header">
                 <span data-bind="text: fromUserName, 
-                    style: {'background-color': $root.colors[fromUserId] || '#eee'}"></span> &rarr;
+                    style: {'background-color': $root.colors[fromUserId] || '#eee'},
+                    css: {clickable: !$parent.isMainUser(fromUserId)},
+                    click: $parent.openUser.bind($root, fromUserId)
+                    "></span> &rarr;
                 <span data-bind="text: toUserName,
-                    style: {'background-color': $root.colors[toUserId] || '#eee'}"></span> @
+                    style: {'background-color': $root.colors[toUserId] || '#eee'},
+                    css: {clickable: !$parent.isMainUser(toUserId)},
+                    click: $parent.openUser.bind($root, toUserId)"></span> @
                 <span data-bind="text: sendDate"></span>
             </div>
             <div class="message" data-bind="highlight: {
