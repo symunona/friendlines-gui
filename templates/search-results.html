@@ -1,5 +1,11 @@
 <div class="search-results">
-    <h2>Search results for "<span data-bind="text: keyword"></span>"</h2>
+    <h2>Search results for "<span data-bind="text: keyword"></span>"
+        <span data-bind="if: threadId"> - Thread: 
+            <span data-bind="text: threadId">
+            </span>
+        </span>
+    </h2>
+    <a data-bind='click: openWordCloud' class="clickable">Open word cloud</a>
     <div class="popup-overflow-wrapper">
         <div data-bind="foreach: messages">
             <div class="message-header">
@@ -17,6 +23,9 @@
             <div class="message" data-bind="highlight: {
                     text: message, 
                     highlight: $root.keyword }"></div>
+            <div data-bind="if: !$parent.threadId, click: $root.openThread.bind($root, $data)" class="clickable">
+                Open thread: <span data-bind="text: threadId"></span>
+            </div>
         </div>
     </div>
 </div>

@@ -58,6 +58,9 @@ header #resetBtn {
   margin-right: 10px;
   border: 0;
 }
+.selectable {
+  -webkit-user-select: auto;
+}
 .search-results {
   -webkit-user-select: auto;
 }
@@ -324,6 +327,9 @@ i.i {
 .clickable {
   cursor: pointer;
 }
+.clickable:hover {
+  text-decoration: underline;
+}
 #statlist .menu a {
   text-decoration: none;
 }
@@ -486,6 +492,7 @@ p.alert {
   height: 470px;
   overflow-x: none;
   overflow-y: auto;
+  word-wrap: break-word;
 }
 #uploadpreview {
   width: 600px;
