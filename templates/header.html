@@ -8,7 +8,8 @@
         </div>
 
         <div class="search right">
-            <input type="text" data-bind='event:{keydown:  search.searchKeyDown}'>
+            <a class="search-status" data-bind="text: search.status(), click: search.openSearchResult"></a>
+            <input type="text" class="search-input" data-bind='event:{keydown:  search.searchKeyDown}' placeholder="search...">
         </div>
 
 

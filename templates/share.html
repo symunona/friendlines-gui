@@ -22,8 +22,10 @@
             and your filter settings.</i></p>
         <p>Once you shared it, you will get a link to send and a facebook share button!</p>
 
-        <textarea rows="1" cols="50" onclick="this.focus();this.select()" readonly="readonly" data-bind="value: $root.link" placeholder="url will appear here">                
-            </textarea>
+        <textarea rows="1" cols="50" onclick="this.focus();this.select()" readonly="readonly" data-bind="value: $root.link" placeholder="url will appear here"></textarea>
+
+        <a data-bind='click: $parent.openShared.bind($root)' class="fa fa-share-square-o"></a>
+
         <div class="center">
             <button data-bind="click: $parent.upload.bind($root), visible: !$root.link()" class="sharebuttonform">Share</button>
             <button data-bind="click: $parent.upload.bind($root), visible: $root.link()" class="newshare">Create new share</button>

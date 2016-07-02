@@ -8,6 +8,12 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+.flipper {
+  cursor: pointer;
+}
+.flipper a:hover {
+  text-decoration: underline;
+}
 header {
   background-color: rgba(255, 255, 255, 0.65);
   position: relative;
@@ -47,6 +53,11 @@ header#search {
 header #resetBtn {
   float: right;
 }
+.search-input {
+  height: 18px;
+  margin-right: 10px;
+  border: 0;
+}
 .search-results {
   -webkit-user-select: auto;
 }
@@ -54,8 +65,13 @@ header #resetBtn {
   font-size: large;
   padding: 5px;
 }
+.search-results .date {
+  font-size: normal;
+  color: grey;
+}
 .search-results .message {
   padding: 5px;
+  word-wrap: break-word;
 }
 .search-results .highlight {
   background-color: #ff5500;
@@ -244,6 +260,9 @@ svg {
 }
 svg rect.mainrect {
   fill: #fff;
+}
+svg .search-result:hover {
+  fill: yellow !important;
 }
 svg .axis path.domain {
   display: none;

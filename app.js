@@ -101,7 +101,7 @@ define([
             var startDate = new Date();
             setTimeout(function() {
                 var drawing = app.actualProcessor()
-                    .draw('#timeline', filter.usersToRender(), params, filter, app);
+                    .draw.draw('#timeline', filter.usersToRender(), params, filter, user.metaData(), app);
                 ui.loading(false);
                 ui.status('Rendered in ' + ((new Date() - startDate) / 1000) + 'sec. Use dragging and zooming to navigate ');
                 filter.save();

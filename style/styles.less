@@ -17,6 +17,13 @@ body{
     user-select: none;
 }
 
+.flipper{
+    cursor: pointer;
+    a:hover{
+        text-decoration: underline;
+    }
+}
+
 header{
     background-color: rgba(255,255,255,.65);
     position: relative;
@@ -39,27 +46,25 @@ header{
     .filtertoggler, .searchtoggler, .userstoggler{ float: right; }
 
     &#search{
-        height: 40px;
-        line-height: 40px;
+        height: 40px; line-height: 40px;
         padding: @padding @padding @padding @padding;
     }
     #resetBtn{float: right;}
     
 }
 
+.search-input{
+    height: 18px;
+    margin-right: 10px; 
+    border: 0;
+}
+
 .search-results{
     -webkit-user-select: auto;
-
-    .message-header{
-        font-size: large;
-        padding: 5px;
-    }
-    .message{
-        padding: 5px;
-    }
-    .highlight{
-        background-color: #ff5500;
-    }
+    .message-header{ font-size: large; padding: 5px; }
+    .date{ font-size: normal; color: grey;}
+    .message{ padding: 5px; word-wrap:break-word; }
+    .highlight{ background-color: #ff5500; }
 }
 
 .toggler{
@@ -200,6 +205,12 @@ svg{
     
     rect.mainrect {
         fill: #fff;
+    }
+
+    .search-result{
+        &:hover{
+            fill: yellow !important;
+        }
     }
     
     .axis {
