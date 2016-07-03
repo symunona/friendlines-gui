@@ -18,7 +18,7 @@
             <li class="menu">
                 <a data-bind='click: ui.visible.menu.bind(this,!ui.visible.menu())' class='menu'>☰</a>
                 <div data-bind='visible: ui.visible.menu()' class='menulist'>
-                    <div data-bind="click: function(){ extract(); ui.visible.menu(false)}">Open new ZIP</div>
+                    <div data-bind="click: function(){ openNew(); ui.visible.menu(false)}">Open new ZIP</div>
                     <div data-bind="click: function(){ ui.visible.menu(false)}">Export image</div>
                     <!--<div>Share</div>-->
                     <div class="noclick">

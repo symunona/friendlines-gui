@@ -80,6 +80,9 @@ define([
                 app.preRender();
             });
         },
+        openNew: function() {
+            user.userName('');
+        },
 
         preRender: function() {
 
@@ -141,8 +144,6 @@ define([
         doit = setTimeout(resizedw, 100);
     };
 
-    /* Loads last user who have been loaded */
-    convert.init();
 
     /* Loads the last processor and drawer */
     var lastProcessor = storage.load(LAST_PROCESSOR);
@@ -154,6 +155,12 @@ define([
         app.actualProcessor(processors[0]);
     }
 
+    /* Loads last user who have been loaded */
+    convert.init(function() {
+        app.preRender();
+    });
+
+
     // DEBUG
     window.ko = ko;
     window.app = app;
@@ -161,6 +168,7 @@ define([
     ko.applyBindings(app, document.getElementById("body"));
 
     // for testing 
-    setTimeout(app.preRender, 0);
+    // if ()
+    // setTimeout(app.preRender, 0);
 
 });

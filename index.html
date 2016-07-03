@@ -59,9 +59,18 @@
         </div>
         <div class="nouser" data-bind="visible: !user.userName() && !ui.loading()" style="display: none;">
             <p>No facebook history zip loaded. </p>
+            <div>Please select a language and then browse a file!</div>
+            <div data-bind="text: ui.status"></div>
+            <select data-bind="options: convert.languages, optionsText: 'name', optionsValue: 'key', optionsCaption: 'New language', value: convert.languageFromTheList">
+            </select>
+            <input data-bind='value: convert.languageKey, enable: !convert.languageFromTheList()' width="10">
+            <input data-bind='value: convert.dateFormat, enable: !convert.languageFromTheList()' width="50">
+            <!--<p>Or input the language code and the date format here: (check the examples, or
+                <a href="http://momentjs.com/docs/#/parsing/string-format/" target="_blank">read more</a>)</p>-->
+
             <!--<p>Try drag & drop or select:</p>-->
             <!--<p>Select it here:</p>-->
-            <button data-bind="click: extract">Browse</button>
+            <button data-bind="click: extract, enable: convert.languageKey() && convert.dateFormat()">Browse</button>
         </div>
 
         <!-- Filter settings page -->
